@@ -1,3 +1,14 @@
-apply plugin: 'java'
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.0.0-beta-2423'
+    }
+}
 
-verion = 'v1.1.1' //should be equal to mod version
+apply plugin: 'kotlin'
+
+version = 'v1.1.1' //should be equal to mod version
+group = 'ru.redenergy.report'
+archivesBaseName = 'qreport-common'
