@@ -12,3 +12,12 @@ apply plugin: 'kotlin'
 version = 'v1.1.1' //should be equal to mod version
 group = 'ru.redenergy.report'
 archivesBaseName = 'qreport-common'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.jetbrains.kotlin:kotlin-stdlib:1.0.0-beta-2423'
+    compile 'org.jetbrains.kotlin:kotlin-runtime:1.0.0-beta-2423'
+}
