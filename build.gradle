@@ -1,0 +1,3 @@
+apply plugin: 'java'
+
+verion = 'v1.1.1' //should be equal to mod version
