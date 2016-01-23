@@ -12,8 +12,9 @@ import java.util.*
  * @param sender - original sender of a ticket
  * @param reason - reason of a ticket
  * @param messages - messages in ticket Note: in database this field will be persisted as json string
+ * @param server - server, from which ticket was sent, used when there are more than 1 server working with one database
  */
-data class Ticket(var uid: UUID = UUID.randomUUID(), var status: TicketStatus, var sender: String, var reason: TicketReason, var messages: MutableList<TicketMessage>) {
+data class Ticket(var uid: UUID = UUID.randomUUID(), var status: TicketStatus, var sender: String, var reason: TicketReason, var messages: MutableList<TicketMessage>, var server: String = "unknown") {
 
     /**
      * A short representation of uuid <br>
