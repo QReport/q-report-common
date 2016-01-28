@@ -44,10 +44,9 @@ fun MutableList<Ticket>.countReasons(): Map<TicketReason, Int> =
  * @param limiter - first N users to return
  */
 fun MutableList<Ticket>.activeUsers(limiter: Int): Map<String, Int> =
-        linkedMapOf(*map { it.sender }
-                    .map { it to  count { t -> t.sender.equals(it) }}
-                    .toTypedArray())
-        .toList()
+        map { it.sender }
+                .distinct()
+                .map { it to  count { t -> t.sender.equals(it) }}
                 .sortedBy { it.second }
                 .reversed()
                 .run { slice(0..Math.min(count() - 1, limiter - 1)) }
