@@ -54,6 +54,19 @@ class TicketKtTest {
 
     @Test
     fun testAverageResponseTime() {
-        throw NotImplementedError()
+        val tickets = arrayListOf<Ticket>()
+
+        val expected = 10000000L;
+
+        for(i in 0..3){
+            val ticket = Ticket(UUID.randomUUID(), TicketStatus.OPEN, "sender #$i", TicketReason.OTHER,
+                    arrayListOf(TicketMessage("sender #$i", "Initial"),
+                                TicketMessage("admin", "response", timestamp = System.currentTimeMillis() + expected)))
+            tickets.add(ticket)
+        }
+
+        val result = tickets.averageResponseTime();
+
+        assertEquals(expected, result)
     }
 }
