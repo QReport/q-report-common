@@ -13,9 +13,10 @@ class TicketKtTest {
     fun testCountReasons() {
         val tickets = arrayListOf<Ticket>()
 
+        var ticketIndex = 0
         for((amount, reason) in TicketReason.values().withIndex()){
             for(index in 0..amount){
-                tickets.add(Ticket(UUID.randomUUID(), TicketStatus.OPEN, "user", reason, arrayListOf(TicketMessage("user", "text"))))
+                tickets.add(Ticket(ticketIndex++, TicketStatus.OPEN, "user", reason, arrayListOf(TicketMessage("user", "text"))))
             }
         }
 
@@ -30,10 +31,11 @@ class TicketKtTest {
     fun testActiveUsers() {
         val tickets = arrayListOf<Ticket>();
 
+        var ticketIndex = 0
         //create a list with 15 tickets per 5 users
         for((amount, user) in arrayOf("First", "Second", "Third", "Fourth", "Fifth", "Sixth").withIndex()){
             for(index in 0..amount){
-                tickets.add(Ticket(UUID.randomUUID(), TicketStatus.OPEN, user, TicketReason.OTHER,
+                tickets.add(Ticket(ticketIndex++, TicketStatus.OPEN, user, TicketReason.OTHER,
                         arrayListOf(TicketMessage(user, "Text"))))
             }
         }
@@ -58,8 +60,9 @@ class TicketKtTest {
 
         val expected = 10000000L;
 
+        var ticketIndex = 0
         for(i in 0..3){
-            val ticket = Ticket(UUID.randomUUID(), TicketStatus.OPEN, "sender #$i", TicketReason.OTHER,
+            val ticket = Ticket(ticketIndex++, TicketStatus.OPEN, "sender #$i", TicketReason.OTHER,
                     arrayListOf(TicketMessage("sender #$i", "Initial"),
                                 TicketMessage("admin", "response", timestamp = System.currentTimeMillis() + expected)))
             tickets.add(ticket)
