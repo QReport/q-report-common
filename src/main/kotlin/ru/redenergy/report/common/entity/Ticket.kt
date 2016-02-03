@@ -58,4 +58,4 @@ fun MutableList<Ticket>.activeUsers(limiter: Int): Map<String, Int> =
 fun MutableList<Ticket>.averageResponseTime(): Long =
         filter { t -> t.messages.any { m -> m.sender != t.sender } }
         .map { it.messages.first { m -> m.sender != it.sender } .timestamp - it.messages[0].timestamp }
-        .run { return sum() / count() }
+        .run { return if(!isEmpty()) sum() / count() else 0L }
