@@ -72,4 +72,14 @@ class TicketKtTest {
 
         assertEquals(expected, result)
     }
+
+    @Test
+    fun testZeroAverageResponseTime(){
+        val tickets = arrayListOf<Ticket>()
+
+        val result = tickets.averageResponseTime()
+
+        assertTrue(result == 0L)
+    }
+
 }
